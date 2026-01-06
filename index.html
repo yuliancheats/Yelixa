@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Para Ti 💖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background: url('happy_valentines_day_92_pink.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Playfair Display', serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#contenedor {
+    text-align: center;
+    background: rgba(255,255,255,0.35);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(255,105,180,0.4);
+}
+
+#titulo {
+    position: fixed;
+    top: 90px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 3rem;
+    color: #ff4ba5;
+    animation: flotar 4s ease-in-out infinite alternate;
+    text-shadow: 2px 2px 8px #eb54de;
+    user-select: none;
+}
+
+@keyframes flotar {
+    from { transform: translate(-50%, 0); }
+    to { transform: translate(-50%, -15px); }
+}
+
+#pregunta {
+    font-size: 2.2rem;
+    color: #ff69b4;
+    margin-bottom: 25px;
+    min-height: 60px;
+}
+
+input {
+    padding: 12px;
+    font-size: 18px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    text-align: center;
+    width: 250px;
+}
+
+input::placeholder {
+    color: #8B008B; /* rosado oscuro */
+}
+
+#error {
+    margin-top: 15px;
+    color: red;
+    font-size: 14px;
+}
+</style>
+</head>
+
+<body>
+
+<div id="titulo">💖 Feliz Cumpleaños 💖</div>
+
+<div id="contenedor">
+    <div id="pregunta"></div>
+    <input type="text" id="nombre" placeholder="Escribe tu nombre">
+    <div id="error"></div>
+</div>
+
+<script>
+// --- Animación letra por letra ---
+document.addEventListener("DOMContentLoaded", () => {
+    const pregunta = document.getElementById('pregunta');
+    const texto = "¿Quién es el Amor de mi vida?";
+    let i = 0;
+    const velocidad = 40;
+
+    pregunta.textContent = "";
+
+    function escribirTexto() {
+        if (i < texto.length) {
+            pregunta.textContent += texto.charAt(i);
+            i++;
+            setTimeout(escribirTexto, velocidad);
+        }
+    }
+
+    escribirTexto();
+});
+
+// --- Validación y redirección ---
+const inputNombre = document.getElementById('nombre');
+const errorDiv = document.getElementById('error');
+
+inputNombre.addEventListener('input', () => {
+    const valor = inputNombre.value.trim();
+
+    if (valor === "Yelixa") {
+        errorDiv.textContent = "";
+        setTimeout(() => {
+            window.location.href = "introduccion.html";
+        }, 1300); // 1.3 segundos
+    } else if (valor.length > 0) {
+        errorDiv.textContent = "Intenta otra vez 💔";
+    } else {
+        errorDiv.textContent = "";
+    }
+});
+</script>
+
+</body>
+</html>
