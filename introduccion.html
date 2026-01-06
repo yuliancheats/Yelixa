@@ -32,8 +32,8 @@ canvas {
     pointer-events: all; 
 }
 #final img {
-    width: 280px;
-    height: 280px;
+    width: 250px;
+    height: 250px;
     object-fit: cover;
     border-radius: 20px;
     box-shadow: 0 0 50px rgba(255,105,180,0.8);
@@ -72,7 +72,7 @@ for (let i = 0; i < 500; i++) {
         x: Math.random() * canvas.width - canvas.width/2,
         y: Math.random() * canvas.height - canvas.height/2,
         z: Math.random() * 1500 + 300,
-        speed: Math.random() * 12 + 6,
+        speed: Math.random() * 18 + 12, // más rápido
         size: Math.random() * 1.5 + 0.5,
         glow: Math.random() * 0.4 + 0.2,
         color: "#ffffb3"
@@ -99,7 +99,7 @@ const fotos = fotosNombres.map(src => {
 
 /* ================= ELEMENTOS ================= */
 let elementos = [];
-let TOTAL = window.innerWidth < 768 ? 30 : 80; // menos elementos en móvil
+let TOTAL = window.innerWidth < 768 ? 15 : 40; // menos elementos en móvil
 let finalizarAnimacion = false;
 
 function crearElemento() {
@@ -107,7 +107,7 @@ function crearElemento() {
         x: Math.random() * canvas.width - canvas.width/2,
         y: Math.random() * canvas.height - canvas.height/2,
         z: Math.random() * 1500 + 600,
-        speed: Math.random() * 4 + 3,
+        speed: Math.random() * 6 + 5, // más rápido
         texto: mensajes[Math.floor(Math.random() * mensajes.length)],
         img: fotos[Math.floor(Math.random() * fotos.length)]
     };
@@ -190,16 +190,16 @@ function mostrarFinal(){
     const final = document.getElementById("final");
     final.classList.add("mostrar");
 
-    // Más estrellas rosadas para el final
+    // Más estrellas rosadas
     const estrellasFinal = [];
-    for(let i=0;i<300;i++){
+    for(let i=0;i<400;i++){ // más estrellas
         estrellasFinal.push({
             x: Math.random()*canvas.width - canvas.width/2,
             y: Math.random()*canvas.height - canvas.height/2,
             z: Math.random()*500+300,
             size: Math.random()*2 + 1,
             color:"#ff69b4",
-            speed: Math.random()*2 + 0.5
+            speed: Math.random()*4 + 1 // más rápido
         });
     }
     estrellas = estrellasFinal;
